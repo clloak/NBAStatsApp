@@ -1,19 +1,15 @@
 package com.example.nbastatsapp;
-
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.net.HttpURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Team extends AppCompatActivity {
+public class Home extends AppCompatActivity {
     private static final String TAG = "NBAStats";
     // private static final String API_KEY = "YOUR_RAPIDAPI_KEY";
     private static final String API_KEY = "7bd4db697amshe7fd91a37559fe2p193867jsn2e7ddeac02dc";
@@ -22,7 +18,7 @@ public class Team extends AppCompatActivity {
     private TextView textView;
 
     /* @Override
-    protected void onCreate(Bundle savedInstanceState) {
+     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -30,12 +26,12 @@ public class Team extends AppCompatActivity {
 
         fetchData();
     }
+
      */
 
     private void fetchData() {
         // Example API call to get current NBA standings
-        String teamId ="TEAM_ID";
-        String endpoint = "/standings/standard/2024/teamId/";
+        String endpoint = "/standings?league=standard&season=2024";
         String url = NBA_API_URL + endpoint;
 
         new Thread(() -> {

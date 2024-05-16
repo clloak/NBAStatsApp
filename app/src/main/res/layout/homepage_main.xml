@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#000000">
+
+    <Button
+        android:id="@+id/button_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Results"
+        android:padding="16dp"
+        android:background="#000000"
+        android:textColor="@android:color/white"
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/button_live_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Live Stats"
+        android:padding="16dp"
+        android:background="#000000"
+        android:textColor="@android:color/white"
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/button_upcoming_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Info"
+        android:padding="16dp"
+        android:background="#000000"
+        android:textColor="@android:color/white"
+        android:layout_margin="8dp"/>
+
+</LinearLayout>

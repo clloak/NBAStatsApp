@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NBAStatsApp</string>
+    <string name="nbastats">NBAStats</string>
+    <string name="nba_stats_app">NBA Stats App</string>
+    <string name="button">Button</string>
+    <string name="press_to_continue">Press to Continue</string>
 </resources>
