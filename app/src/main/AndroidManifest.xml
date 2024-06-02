@@ -13,16 +13,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity
-            android:name=".NBAStats"
-            android:exported="true"
-            android:theme="@style/Theme.NBAStatsApp"
-            android:label="@string/app_name">
+
+        <activity android:name=".GameDetailActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name=".NBAStats"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Homepage"
+            android:exported="true">
+        </activity>
+
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

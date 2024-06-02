@@ -1,7 +1,7 @@
 package com.example.nbastatsapp;
 
 import java.util.List;
-public class Season {
+public class SeasonsResponse {
     private List<String> response;
 
     public List<String> getResponse() {

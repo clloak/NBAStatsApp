@@ -1,66 +1,23 @@
 package com.example.nbastatsapp;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+public class Team  {
+    private String name;
+    private String logo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-public class Team extends AppCompatActivity {
-    private static final String TAG = "NBAStats";
-    // private static final String API_KEY = "YOUR_RAPIDAPI_KEY";
-    private static final String API_KEY = "7bd4db697amshe7fd91a37559fe2p193867jsn2e7ddeac02dc";
-    private static final String NBA_API_URL = "https://api-nba-v1.p.rapidapi.com";
-
-    private TextView textView;
-
-    /* @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        textView = findViewById(R.id.textView);
-
-        fetchData();
+    // Getters and setters
+    public String getName() {
+        return name;
     }
-     */
 
-    private void fetchData() {
-        // Example API call to get current NBA standings
-        String teamId ="TEAM_ID";
-        String endpoint = "/standings/standard/2024/teamId/";
-        String url = NBA_API_URL + endpoint;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        new Thread(() -> {
-            try {
-                HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("X-RapidAPI-Key", API_KEY);
-                connection.setRequestProperty("X-RapidAPI-Host", "api-nba-v1.p.rapidapi.com");
+    public String getLogo() {
+        return logo;
+    }
 
-                InputStream inputStream = connection.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                StringBuilder response = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
-                }
-                reader.close();
-                connection.disconnect();
-
-                runOnUiThread(() -> {
-                    textView.setText(response.toString());
-                });
-            } catch (IOException e) {
-                Log.e(TAG, "fetchData: Error fetching data", e);
-            }
-        }).start();
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 }

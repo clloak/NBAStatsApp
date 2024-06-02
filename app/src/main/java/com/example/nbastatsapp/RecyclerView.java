@@ -1,4 +1,4 @@
 package com.example.nbastatsapp;
 
-public class Player {
+public class RecyclerView {
 }
