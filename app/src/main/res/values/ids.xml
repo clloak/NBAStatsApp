@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="homeTeam" type="id"/>
+    <item name="awayTeam" type="id"/>
+    <item name="home_team_logo" type="id" />
+    <item name="away_team_logo" type="id" />
+    <item name="home_team_name" type="id" />
+    <item name="away_team_name" type="id" />
+    <item name="game_time" type="id" />
+    <item name="viewPager" type="id" />
 </resources>

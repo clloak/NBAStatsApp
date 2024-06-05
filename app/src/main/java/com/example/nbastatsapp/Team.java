@@ -4,7 +4,11 @@ public class Team  {
     private String name;
     private String logo;
 
-    // Getters and setters
+    public Team(String name, String logo) {
+        this.name = name;
+        this.logo = logo;
+    }
+
     public String getName() {
         return name;
     }

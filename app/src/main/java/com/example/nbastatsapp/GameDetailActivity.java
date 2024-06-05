@@ -53,7 +53,7 @@ public class GameDetailActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 runOnUiThread(() -> {
-                    Log.e("GameDetailActivity", "onFailure: ", e);
+                    Log.e("GameDetailActivity", "failed to fetch game details: ", e);
                 });
             }
 
@@ -61,25 +61,17 @@ public class GameDetailActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     String jsonData = response.body().string();
-                    Type responseType = new TypeToken<APIResponse<Game>>() {
+                    Type responseType = new TypeToken<APIResponse<PlayerStats>>() {
                     }.getType();
-                    APIResponse<Game> gameResponse = new Gson().fromJson(jsonData, responseType);
+                    APIResponse<PlayerStats> apiResponse = new Gson().fromJson(jsonData, responseType);
+                    playerStatsList = apiResponse.getResponse();
                     runOnUiThread(() -> {
-                        Game game = gameResponse.getResponse().get(0); // Assuming only one game is fetched
-                        updateUI(game);
+                        boxScoreAdapter = new BoxScoreAdapter(playerStatsList);
+                        recyclerView.setAdapter(boxScoreAdapter);
+                        // Update other UI elements as needed
                     });
                 }
             }
         });
-    }
-
-    private void updateUI(Game game) {
-        gameScore.setText(game.getHomeTeam() + " " + game.getScore() + " " + game.getAwayTeam());
-        team1Name.setText(game.getHomeTeam());
-        team2Name.setText(game.getAwayTeam());
-        // Retrieve player stats
-        playerStatsList = game.getPlayerStatsList();
-        boxScoreAdapter = new BoxScoreAdapter(playerStatsList);
-        recyclerView.setAdapter(boxScoreAdapter);
     }
 }

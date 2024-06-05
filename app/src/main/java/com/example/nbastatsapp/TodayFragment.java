@@ -1,33 +1,45 @@
 package com.example.nbastatsapp;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 public class TodayFragment extends Fragment {
     private RecyclerView recyclerView;
+    private TextView noGamesTextView;
     private GameAdapter gameAdapter;
-    private List<Game> gameList;
+    private List<Game> gameList = new ArrayList<>();
+    private static final String TAG = "TodayFragment";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView: called");
         View view = inflater.inflate(R.layout.fragment_today, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
+        noGamesTextView = view.findViewById(R.id.noGamesTextView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        fetchGames("2024-06-01"); // Example date for "Today"
+        fetchGames("2024-06-03"); // Enter Today's Date
         return view;
     }
 
@@ -43,27 +55,63 @@ public class TodayFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                // Handle failure
+                Log.e(TAG, "onFailure: ", e); // Handle failure
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     String jsonData = response.body().string();
-                    // Parse JSON and update UI
-                    // Assume GameAdapter and Game class are correctly implemented
+                    Log.d(TAG, "onResponse: jsonData = " + jsonData);
                     List<Game> games = parseJsonToGameList(jsonData);
                     getActivity().runOnUiThread(() -> {
-                        gameAdapter = new GameAdapter(games);
-                        recyclerView.setAdapter(gameAdapter);
+                        if (games.isEmpty()) {
+                            noGamesTextView.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                        } else {
+                            noGamesTextView.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
+                            gameList.addAll(games);
+                            gameAdapter = new GameAdapter(games, getContext());
+                            recyclerView.setAdapter(gameAdapter);
+                        }
                     });
+                }else{
+                    Log.d(TAG, "onResponse: response not successful, code: " + response.code());
+                    Log.d(TAG, "onResponse: response body: " + response.body().string());
                 }
             }
         });
     }
 
     private List<Game> parseJsonToGameList(String jsonData) {
-        // Implement JSON parsing logic
-        return null; // Replace with actual parsed list
+        List<Game> games = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(jsonData);
+            JSONArray responseArray = jsonObject.getJSONArray("response");
+
+            for (int i = 0; i < responseArray.length(); i++) {
+                JSONObject gameObject = responseArray.getJSONObject(i);
+
+                // Extract data
+                String gameTime = gameObject.getJSONObject("date").getString("start");
+
+                JSONObject homeTeamObject = gameObject.getJSONObject("teams").getJSONObject("home");
+                Team homeTeam = new Team(homeTeamObject.getString("name"), homeTeamObject.getString("logo"));
+
+                JSONObject awayTeamObject = gameObject.getJSONObject("teams").getJSONObject("visitors");
+                Team awayTeam = new Team(awayTeamObject.getString("name"), awayTeamObject.getString("logo"));
+
+                Game game = new Game();
+                game.setHomeTeam(homeTeam);
+                game.setAwayTeam(awayTeam);
+                game.setGameTime(gameTime);
+
+                games.add(game);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return games;
     }
 }

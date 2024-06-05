@@ -1,57 +1,40 @@
 package com.example.nbastatsapp;
 import java.util.List;
-public class Game {
-    private String homeTeam;
-    private String awayTeam;
-    private String date;
-    private String homeTeamLogo;
-    private String awayTeamLogo;
-    private String score;
+public class Game {private Team homeTeam;
+    private Team awayTeam;
+    private String gameTime;
+    private String gameDate;
     private List<PlayerStats> playerStatsList;
 
-    // Getters and setters
-    public String getHomeTeam() {
+    public Team getHomeTeam() {
         return homeTeam;
     }
-    public void setHomeTeam(String homeTeam) {
+
+    public void setHomeTeam(Team homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public String getAwayTeam() {
+    public Team getAwayTeam() {
         return awayTeam;
     }
-    public void setAwayTeam(String awayTeam) {
+
+    public void setAwayTeam(Team awayTeam) {
         this.awayTeam = awayTeam;
     }
 
-    public String getDate() {
-        return date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
-    public String getHomeTeamLogo() {
-        return homeTeamLogo;
-    }
-    public void setHomeTeamLogo(String homeTeamLogo) {
-        this.homeTeamLogo = homeTeamLogo;
+    public String getGameTime() {
+        return gameTime;
     }
 
-    public String getAwayTeamLogo() {
-        return awayTeamLogo;
+    public void setGameTime(String gameTime) {
+        this.gameTime = gameTime;
     }
-    public void setAwayTeamLogo(String awayTeamLogo) {
-        this.awayTeamLogo = awayTeamLogo;
-    }
-
-    public String getScore() {
-        return score;
-    }
-    public List<PlayerStats> getPlayerStatsList() {
-        return playerStatsList;
+    public String getGameDate() {
+        return gameDate;
     }
 
-    public void setPlayerStatsList(List<PlayerStats> playerStatsList) {
-        this.playerStatsList = playerStatsList;
+    public void setGameDate(String gameDate) {
+        this.gameDate = gameDate;
     }
+
 }

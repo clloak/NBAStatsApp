@@ -3,33 +3,90 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="8dp"
+    android:background="@drawable/game_item_background">
 
-    <ImageView
-        android:id="@+id/team1Logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/team1_logo" />
-
-    <ImageView
-        android:id="@+id/team2Logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/team2_logo" />
-
-    <TextView
-        android:id="@+id/gameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Game Title"
-        android:textSize="16sp"
-        android:textColor="@android:color/black" />
-
+    <!-- Date and Time -->
     <TextView
         android:id="@+id/gameDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game Date"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray" />
+        android:text="Date"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textStyle="bold"
+        android:paddingBottom="4dp" />
+
+    <TextView
+        android:id="@+id/gameTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:paddingBottom="8dp" />
+
+    <!-- Teams Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Home Team Logo -->
+        <ImageView
+            android:id="@+id/homeTeamLogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_team1_logo" />
+
+        <!-- Home Team Name -->
+        <TextView
+            android:id="@+id/homeTeamName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Home Team"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+
+        <!-- VS Text -->
+        <TextView
+            android:id="@+id/vsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vs"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+
+        <!-- Away Team Name -->
+        <TextView
+            android:id="@+id/awayTeamName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Away Team"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textStyle="bold"
+            android:gravity="center_vertical" />
+
+        <!-- Away Team Logo -->
+        <ImageView
+            android:id="@+id/awayTeamLogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_team2_logo" />
+    </LinearLayout>
+
+    <!-- Additional Info -->
+    <TextView
+        android:id="@+id/additionalInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Additional Info"
+        android:paddingTop="8dp" />
 </LinearLayout>

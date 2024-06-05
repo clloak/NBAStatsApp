@@ -8,4 +8,16 @@
     <string name="upcoming_games">Upcoming Games</string>
     <string name="team1_logo">Team 1 Logo</string>
     <string name="team2_logo">Team 2 Logo</string>
+    <string name="no_games_yesterday">No Games Yesterday</string>
+    <string name="no_games_upcoming">No Games Upcoming</string>
+    <string name="no_games_today">No Games Today</string>
+    <string name="home_team_logo">Home Team Logo</string>
+    <string name="away_team_logo">Away Team Logo</string>
+    <string name="home_team_name">Home Team Name</string>
+    <string name="away_team_name">Away Team Name</string>
+    <string name="game_time">Game Time</string>
+    <string name="tabs"> Tabs </string>
+    <string name="view_pager">View Pager</string>
+    <string name="search_view">Search View</string>
+    <string name="search_results_recycler_view">Search Results Recycler View</string>
 </resources>

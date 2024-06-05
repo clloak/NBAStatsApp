@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.nbastatsapp">
-
     <application
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,11 +12,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-
         <activity android:name=".GameDetailActivity"
             android:exported="true">
         </activity>
-
         <activity android:name=".NBAStats"
             android:exported="true">
             <intent-filter>
@@ -25,12 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Homepage"
             android:exported="true">
         </activity>
-
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
-
 </manifest>
