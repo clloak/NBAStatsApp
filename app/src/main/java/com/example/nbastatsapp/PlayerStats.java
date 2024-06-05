@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PlayerStats extends AppCompatActivity {
+    private String name;
+    private String teamName;
+    private int gamesPlayed;
     private String playerName;
     private int minutes;
     private int points;
@@ -17,7 +20,28 @@ public class PlayerStats extends AppCompatActivity {
     private int threePointers;
     private int plusMinus;
 
+    public PlayerStats(String name, String teamName, int gamesPlayed, String playerName, int minutes, int points, int rebounds, int assists, int fieldGoals, int threePointers, int plusMinus){
+        this.name = name;
+        this.teamName = teamName;
+        this.gamesPlayed = gamesPlayed;
+        this.minutes = minutes;
+        this.points = points;
+        this.rebounds = rebounds;
+        this.assists = assists;
+        this.fieldGoals = fieldGoals;
+        this.threePointers = threePointers;
+        this.plusMinus = plusMinus;
+    }
     // Getters and setters
+    public String getName(){
+        return name;
+    }
+    public String getTeamName(){
+        return teamName;
+    }
+    public int getGamesPlayed(){
+        return gamesPlayed;
+    }
     public String getPlayerName() {
         return playerName;
     }

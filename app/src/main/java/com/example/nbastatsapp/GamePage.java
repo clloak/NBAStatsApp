@@ -32,13 +32,13 @@ public class GamePage extends AppCompatActivity {
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
                 case 0:
-                    tab.setText("Last 15 Days");
+                    tab.setText("Previous Week");
                     break;
                 case 1:
                     tab.setText("Today");
                     break;
                 case 2:
-                    tab.setText("Next 15 Days");
+                    tab.setText("Next Week");
                     break;
             }
         }).attach();

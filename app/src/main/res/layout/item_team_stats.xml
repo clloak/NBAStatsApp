@@ -14,11 +14,11 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/minutes"
+        android:id="@+id/games_played"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="MIN"
+        android:text="GP"
         android:textSize="14sp" />
 
     <TextView
@@ -46,27 +46,43 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/field_goals"
+        android:id="@+id/steals"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="FG"
+        android:text="STL"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/three_pointers"
+        android:id="@+id/blocks"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="3PT"
+        android:text="BLK"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/plus_minus"
+        android:id="@+id/turnovers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="+/-"
+        android:text="TO"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/personal_fouls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="PF"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/assist_to_turnover_ratio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="AST/TO"
         android:textSize="14sp" />
 
 </LinearLayout>

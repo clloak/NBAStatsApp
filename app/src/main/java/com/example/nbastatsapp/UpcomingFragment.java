@@ -70,7 +70,7 @@ public class UpcomingFragment extends Fragment {
         Log.d(TAG, "fetchUpcomingGames: called");
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles")); // Set time zone to Pacific
         // 15 Days ahead
-        for (int i = 0; i < 15; i++) { // Fetch games for the next 30 days
+        for (int i = 0; i < 7; i++) { // Fetch games for the next 7 days
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             sdf.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles")); // Set time zone to Pacific
             String date = sdf.format(calendar.getTime());

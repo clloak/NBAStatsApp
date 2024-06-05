@@ -52,8 +52,8 @@ public class YesterdayFragment extends Fragment {
         gameAdapter = new GameAdapter(gameList);
         recyclerView.setAdapter(gameAdapter);
 
-        // Fetch games for the past 15 days
-        fetchGamesForPastDays(15);
+        // Fetch games for the past 7 days
+        fetchGamesForPastDays(7);
 
         return view;
     }
