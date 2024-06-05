@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="@color/black"
+    android:background="@color/white"
     android:padding="8dp"
     android:layout_gravity="center"
     android:elevation="4dp">
@@ -12,50 +12,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/team1Logo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_team1_logo" />
-
-        <ImageView
-            android:id="@+id/team2Logo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_team2_logo" />
-
         <TextView
             android:id="@+id/team1Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/team1Logo"
-            android:layout_marginStart="8dp"
             android:text="Team 1"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/team2Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/team2Logo"
-            android:layout_marginEnd="8dp"
             android:text="Team 2"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/gameTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:text="5:30 PM"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_centerInParent="true"/>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

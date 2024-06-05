@@ -1,64 +1,69 @@
 package com.example.nbastatsapp;
 
 import android.view.LayoutInflater;
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
-
+import com.bumptech.glide.Glide;
 import java.util.List;
-public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder>{
-    private List<Game> gameList;
-    private Context context;
 
-    public GameAdapter(List<Game> gameList, Context context) {
-        this.gameList = gameList;
-        this.context = context;
+public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
+    private List<Game> games;
+
+    public GameAdapter(List<Game> games) {
+        this.games = games;
     }
 
     @NonNull
     @Override
-    public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_game, parent, false);
-        return new GameViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_game, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GameViewHolder holder, int position) {
-        Game game = gameList.get(position);
-        holder.homeTeamName.setText(game.getHomeTeam().getName());
-        holder.awayTeamName.setText(game.getAwayTeam().getName());
-        holder.gameTime.setText(game.getGameTime());
-
-        Picasso.get().load(game.getHomeTeam().getLogo()).into(holder.homeTeamLogo);
-        Picasso.get().load(game.getAwayTeam().getLogo()).into(holder.awayTeamLogo);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Game game = games.get(position);
+        holder.bind(game);
     }
 
     @Override
     public int getItemCount() {
-        return gameList.size();
+        return games.size();
     }
 
-    public static class GameViewHolder extends RecyclerView.ViewHolder {
-        ImageView homeTeamLogo;
-        ImageView awayTeamLogo;
-        TextView homeTeamName;
-        TextView awayTeamName;
-        TextView gameTime;
+    public void addGame(Game game) {
+        games.add(game);
+        notifyItemInserted(games.size() - 1);
+    }
 
-        public GameViewHolder(@NonNull View itemView) {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView homeTeamLogo;
+        private ImageView awayTeamLogo;
+        private TextView homeTeamName;
+        private TextView awayTeamName;
+        private TextView gameTime;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            homeTeamLogo = itemView.findViewById(R.id.home_team_logo);
-            awayTeamLogo = itemView.findViewById(R.id.away_team_logo);
-            homeTeamName = itemView.findViewById(R.id.home_team_name);
-            awayTeamName = itemView.findViewById(R.id.away_team_name);
-            gameTime = itemView.findViewById(R.id.game_time);
+            homeTeamLogo = itemView.findViewById(R.id.homeTeamLogo);
+            awayTeamLogo = itemView.findViewById(R.id.awayTeamLogo);
+            homeTeamName = itemView.findViewById(R.id.homeTeamName);
+            awayTeamName = itemView.findViewById(R.id.awayTeamName);
+            gameTime = itemView.findViewById(R.id.gameTime);
+        }
+
+        public void bind(Game game) {
+            homeTeamName.setText(game.getHomeTeam().getName());
+            awayTeamName.setText(game.getAwayTeam().getName());
+            gameTime.setText(game.getGameTime());
+
+            // Load team logos using Glide or any other image loading library
+            Glide.with(itemView.getContext()).load(game.getHomeTeam().getLogo()).into(homeTeamLogo);
+            Glide.with(itemView.getContext()).load(game.getAwayTeam().getLogo()).into(awayTeamLogo);
         }
     }
 }

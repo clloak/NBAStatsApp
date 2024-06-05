@@ -2,34 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/game_item_background"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:elevation="4dp"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="@drawable/game_item_background">
+    android:padding="16dp">
+
 
     <!-- Date and Time -->
-    <TextView
-        android:id="@+id/gameDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:textStyle="bold"
-        android:paddingBottom="4dp" />
-
     <TextView
         android:id="@+id/gameTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/roboto_bold"
+        android:paddingBottom="8dp"
         android:text="Time"
         android:textAppearance="?attr/textAppearanceListItem"
-        android:paddingBottom="8dp" />
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <!-- Teams Layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <!-- Home Team Logo -->
         <ImageView
@@ -37,7 +37,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_team1_logo" />
+            android:src="@drawable/ic_team1_logo"
+            android:contentDescription="@string/home_team_logo"/>
 
         <!-- Home Team Name -->
         <TextView
@@ -45,22 +46,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
             android:text="Home Team"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textStyle="bold"
-            android:gravity="center_vertical" />
+            android:textColor="@color/white"/>
 
         <!-- VS Text -->
         <TextView
             android:id="@+id/vsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center_vertical"
             android:text="vs"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:textStyle="bold"
-            android:gravity="center_vertical" />
+            android:textColor="@color/white"/>
 
         <!-- Away Team Name -->
         <TextView
@@ -68,10 +71,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
             android:text="Away Team"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textStyle="bold"
-            android:gravity="center_vertical" />
+            android:textColor="@color/white"/>
 
         <!-- Away Team Logo -->
         <ImageView
@@ -79,7 +83,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
-            android:src="@drawable/ic_team2_logo" />
+            android:src="@drawable/ic_team2_logo"
+            android:contentDescription="@string/away_team_logo"/>
     </LinearLayout>
 
     <!-- Additional Info -->
@@ -87,6 +92,7 @@
         android:id="@+id/additionalInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         android:text="Additional Info"
-        android:paddingTop="8dp" />
+        android:textColor="@color/light_grey"/>
 </LinearLayout>

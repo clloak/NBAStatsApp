@@ -1,6 +1,9 @@
 package com.example.nbastatsapp;
+
 import java.util.List;
-public class Game {private Team homeTeam;
+
+public class Game {
+    private Team homeTeam;
     private Team awayTeam;
     private String gameTime;
     private String gameDate;
@@ -29,6 +32,7 @@ public class Game {private Team homeTeam;
     public void setGameTime(String gameTime) {
         this.gameTime = gameTime;
     }
+
     public String getGameDate() {
         return gameDate;
     }
@@ -37,4 +41,10 @@ public class Game {private Team homeTeam;
         this.gameDate = gameDate;
     }
 
+    public List<PlayerStats> getPlayerStatsList() {
+        return playerStatsList;
+    }
+    public void setPlayerStatsList(List<PlayerStats> playerStatsList) {
+        this.playerStatsList = playerStatsList;
+    }
 }

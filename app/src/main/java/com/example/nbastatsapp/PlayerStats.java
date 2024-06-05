@@ -1,6 +1,13 @@
 package com.example.nbastatsapp;
 
-public class PlayerStats {
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PlayerStats extends AppCompatActivity {
     private String playerName;
     private int minutes;
     private int points;
@@ -73,5 +80,20 @@ public class PlayerStats {
 
     public void setPlusMinus(int plusMinus) {
         this.plusMinus = plusMinus;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_home) {
+            // Handle click on the Home button
+            startActivity(new Intent(this, HomePage.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

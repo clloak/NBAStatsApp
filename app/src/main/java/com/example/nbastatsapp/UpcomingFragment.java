@@ -1,4 +1,5 @@
 package com.example.nbastatsapp;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,32 +8,41 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.TimeZone;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 public class UpcomingFragment extends Fragment {
     private RecyclerView recyclerView;
     private TextView noGamesTextView;
@@ -44,13 +54,13 @@ public class UpcomingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: called");
-        View view = inflater.inflate(R.layout.fragment_today, container, false);
+        View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
         noGamesTextView = view.findViewById(R.id.noGamesTextView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         gameList = new ArrayList<>();
-        gameAdapter = new GameAdapter(gameList, getContext());
+        gameAdapter = new GameAdapter(gameList);
         recyclerView.setAdapter(gameAdapter);
         fetchUpcomingGames(); // Fetch games for the upcoming week
         return view;
@@ -58,10 +68,11 @@ public class UpcomingFragment extends Fragment {
 
     private void fetchUpcomingGames() {
         Log.d(TAG, "fetchUpcomingGames: called");
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-
-        for (int i = 0; i < 7; i++) {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("America/Los_Angeles")); // Set time zone to Pacific
+        // 15 Days ahead
+        for (int i = 0; i < 15; i++) { // Fetch games for the next 30 days
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            sdf.setTimeZone(TimeZone.getTimeZone("America/Los_Angeles")); // Set time zone to Pacific
             String date = sdf.format(calendar.getTime());
             Log.d(TAG, "fetchUpcomingGames: fetching games for date: " + date);
             fetchGames(date);
@@ -71,12 +82,7 @@ public class UpcomingFragment extends Fragment {
 
     private void fetchGames(String date) {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://api-nba-v1.p.rapidapi.com/games?date=" + date)
-                .get()
-                .addHeader("X-RapidAPI-Key", "0a58e25b9bmsh009beca8bf674c2p143494jsne840fca5cc3b")
-                .addHeader("X-RapidAPI-Host", "api-nba-v1.p.rapidapi.com")
-                .build();
+        Request request = new Request.Builder().url("https://api-nba-v1.p.rapidapi.com/games?date=" + date).get().addHeader("X-RapidAPI-Key", "0a58e25b9bmsh009beca8bf674c2p143494jsne840fca5cc3b").addHeader("X-RapidAPI-Host", "api-nba-v1.p.rapidapi.com").build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -91,19 +97,17 @@ public class UpcomingFragment extends Fragment {
                 if (response.isSuccessful()) {
                     String jsonData = response.body().string();
                     Log.d(TAG, "onResponse: jsonData = " + jsonData);
-                    List<Game> games = parseJsonToGameList(jsonData);
                     getActivity().runOnUiThread(() -> {
+                        List<Game> games = parseJsonToGameList(jsonData);
                         if (!games.isEmpty()) {
-                            Log.d(TAG, "onResponse: No games found for date " + date);
-                            gameList.addAll(games);
                             noGamesTextView.setVisibility(View.GONE);
+                            for (Game game : games) {
+                                gameAdapter.addGame(game);
+                            }
                             gameAdapter.notifyDataSetChanged();
+                        } else {
+                            noGamesTextView.setVisibility(View.VISIBLE);
                         }
-                        // else {
-                        //                            Log.d(TAG, "onResponse: Games found for date " + date);
-                        //                            noGamesTextView.setVisibility(View.GONE);
-                        //                            gameAdapter = new GameAdapter(gameList, getContext());
-                        //                            recyclerView.setAdapter(gameAdapter);
                     });
                 } else {
                     getActivity().runOnUiThread(() -> {
@@ -151,6 +155,7 @@ public class UpcomingFragment extends Fragment {
         }
         return games;
     }
+
     private List<String> getUpcomingDates() {
         List<String> dates = new ArrayList<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());

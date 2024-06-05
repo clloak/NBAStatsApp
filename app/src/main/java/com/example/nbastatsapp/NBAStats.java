@@ -3,8 +3,8 @@ package com.example.nbastatsapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NBAStats extends AppCompatActivity {
@@ -15,16 +15,18 @@ public class NBAStats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button continueButton = findViewById(R.id.button);
-        continueButton.setOnClickListener(v -> {
-            Intent intent = new Intent(NBAStats.this, Homepage.class);
-            startActivity(intent);
-            finish();
-        });
+        // Define fade-out animation
+        Animation fadeOutAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
 
+        // Apply fade-out animation to the ConstraintLayout
+        findViewById(R.id.rootLayout).startAnimation(fadeOutAnimation);
+
+        // Delayed navigation to Homepage
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(NBAStats.this, Homepage.class);
+            Intent intent = new Intent(NBAStats.this, HomePage.class);
             startActivity(intent);
+            // Apply fade-in animation to the transition
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }, SPLASH_SCREEN_DELAY);
     }
