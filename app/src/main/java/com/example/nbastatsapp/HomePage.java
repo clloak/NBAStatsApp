@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomePage extends AppCompatActivity {
     private Button gamesButton;
-    private Button playerSearchButton;
     private Button teamSearchButton;
 
     @Override
@@ -22,7 +21,6 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.homepage_main);
 
         gamesButton = findViewById(R.id.gamesButton);
-        playerSearchButton = findViewById(R.id.playerSearchButton);
         teamSearchButton = findViewById(R.id.teamSearchButton);
 
         gamesButton.setOnClickListener(new View.OnClickListener() {
@@ -31,18 +29,11 @@ public class HomePage extends AppCompatActivity {
                 startActivity(new Intent(HomePage.this, GamePage.class));
             }
         });
-
-        playerSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomePage.this, PlayerStats.class));
-            }
-        });
-
         teamSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomePage.this, Team.class));
+                // Start TeamActivity for teams
+                startActivity(new Intent(HomePage.this, TeamActivity.class));
             }
         });
     }

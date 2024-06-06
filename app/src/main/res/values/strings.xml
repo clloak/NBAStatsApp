@@ -20,4 +20,6 @@
     <string name="view_pager">View Pager</string>
     <string name="search_view">Search View</string>
     <string name="search_results_recycler_view">Search Results Recycler View</string>
+    <string name="search_hint">Enter player or team name</string>
+    <string name="search_button_text">Search</string>
 </resources>

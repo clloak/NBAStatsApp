@@ -10,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PlayerStats extends AppCompatActivity {
     private String name;
     private String teamName;
+    private String firstname;
+    private String lastname;
     private int gamesPlayed;
     private String playerName;
+    private int id;
     private int minutes;
     private int points;
     private int rebounds;
@@ -20,9 +23,12 @@ public class PlayerStats extends AppCompatActivity {
     private int threePointers;
     private int plusMinus;
 
-    public PlayerStats(String name, String teamName, int gamesPlayed, String playerName, int minutes, int points, int rebounds, int assists, int fieldGoals, int threePointers, int plusMinus){
+    public PlayerStats(String name, String firstname, String lastname, String teamName, int id, int gamesPlayed, String playerName, int minutes, int points, int rebounds, int assists, int fieldGoals, int threePointers, int plusMinus){
         this.name = name;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.teamName = teamName;
+        this.id = id;
         this.gamesPlayed = gamesPlayed;
         this.minutes = minutes;
         this.points = points;
@@ -38,6 +44,21 @@ public class PlayerStats extends AppCompatActivity {
     }
     public String getTeamName(){
         return teamName;
+    }
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
     public int getGamesPlayed(){
         return gamesPlayed;
@@ -119,5 +140,9 @@ public class PlayerStats extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -17,13 +17,77 @@
         android:id="@+id/teamRecordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Team Record"
+        android:text="Record"
         android:textSize="18sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/teamStatsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp" />
+    <TextView
+        android:id="@+id/pointsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/assistsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assists"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/reboundsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rebounds"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/stealsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steals"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/blocksTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blocks"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/turnoversTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turnovers"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/pFoulsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personal Fouls"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/plusMinusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plus/Minus"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/fieldGoalsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Field Goal %"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/threePointersTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Three Point %"
+        android:textSize="18sp" />
 
 </LinearLayout>

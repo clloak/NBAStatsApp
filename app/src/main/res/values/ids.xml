@@ -20,8 +20,16 @@
     <item name="personalFoulsTextView" type="id"/>
     <item name="assistToTurnoverRatioTextView" type="id"/>
     <item name="player_name" type="id"/>
+    <item name="playerName" type="id"/>
+    <item name="gamesPlayed" type="id"/>
+    <item name="teamRecord" type="id"/>
     <item name="team_name" type="id"/>
     <item name="player_stats_recycler_view" type="id"/>
     <item name="team_record" type="id"/>
+    <item name="fieldGoals" type="id"/>
+    <item name="personalFouls" type="id"/>
+    <item name="assistToTurnoverRatio" type="id"/>
     <item name="team_stats_recycler_view" type="id"/>
+    <item name="threePointers" type="id"/>
+    <item name="plusMinus" type="id"/>
 </resources>

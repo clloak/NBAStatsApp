@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class TeamStatsAdapter extends RecyclerView.Adapter<TeamStatsAdapter.TeamStatsViewHolder> {
-    private List<TeamStats> teamStatsList;
+    private final List<TeamStats> teamStatsList;
 
     public TeamStatsAdapter(List<TeamStats> teamStatsList) {
         this.teamStatsList = teamStatsList;
@@ -25,16 +25,16 @@ public class TeamStatsAdapter extends RecyclerView.Adapter<TeamStatsAdapter.Team
     @Override
     public void onBindViewHolder(@NonNull TeamStatsViewHolder holder, int position) {
         TeamStats teamStats = teamStatsList.get(position);
-        holder.playerName.setText(teamStats.getPlayerName());
-        holder.gamesPlayed.setText(String.valueOf(teamStats.getGamesPlayed()));
-        holder.points.setText(String.valueOf(teamStats.getPoints()));
-        holder.rebounds.setText(String.valueOf(teamStats.getRebounds()));
-        holder.assists.setText(String.valueOf(teamStats.getAssists()));
-        holder.steals.setText(String.valueOf(teamStats.getSteals()));
-        holder.blocks.setText(String.valueOf(teamStats.getBlocks()));
-        holder.turnovers.setText(String.valueOf(teamStats.getTurnovers()));
-        holder.personalFouls.setText(String.valueOf(teamStats.getPersonalFouls()));
-        holder.assistToTurnoverRatio.setText(String.valueOf(teamStats.getAssistToTurnoverRatio()));
+        holder.playerNameTextView.setText(teamStats.getPlayerName());
+        holder.gamesPlayedTextView.setText(String.valueOf(teamStats.getGamesPlayed()));
+        holder.pointsTextView.setText(String.valueOf(teamStats.getPoints()));
+        holder.reboundsTextView.setText(String.valueOf(teamStats.getRebounds()));
+        holder.assistsTextView.setText(String.valueOf(teamStats.getAssists()));
+        holder.stealsTextView.setText(String.valueOf(teamStats.getSteals()));
+        holder.blocksTextView.setText(String.valueOf(teamStats.getBlocks()));
+        holder.turnoversTextView.setText(String.valueOf(teamStats.getTurnovers()));
+        holder.personalFoulsTextView.setText(String.valueOf(teamStats.getPersonalFouls()));
+        holder.assistToTurnoverRatioTextView.setText(String.valueOf(teamStats.getAssistToTurnoverRatio()));
     }
 
     @Override
@@ -42,21 +42,29 @@ public class TeamStatsAdapter extends RecyclerView.Adapter<TeamStatsAdapter.Team
         return teamStatsList.size();
     }
 
-    static class TeamStatsViewHolder extends RecyclerView.ViewHolder {
-        TextView playerName, gamesPlayed, points, rebounds, assists, steals, blocks, turnovers, personalFouls, assistToTurnoverRatio;
-
+    public static class TeamStatsViewHolder extends RecyclerView.ViewHolder {
+        TextView playerNameTextView;
+        TextView gamesPlayedTextView;
+        TextView pointsTextView;
+        TextView reboundsTextView;
+        TextView assistsTextView;
+        TextView stealsTextView;
+        TextView blocksTextView;
+        TextView turnoversTextView;
+        TextView personalFoulsTextView;
+        TextView assistToTurnoverRatioTextView;
         public TeamStatsViewHolder(@NonNull View itemView) {
             super(itemView);
-            playerName = itemView.findViewById(R.id.playerNameTextView);
-            gamesPlayed = itemView.findViewById(R.id.gamesPlayedTextView);
-            points = itemView.findViewById(R.id.pointsTextView);
-            rebounds = itemView.findViewById(R.id.reboundsTextView);
-            assists = itemView.findViewById(R.id.assistsTextView);
-            steals = itemView.findViewById(R.id.stealsTextView);
-            blocks = itemView.findViewById(R.id.blocksTextView);
-            turnovers = itemView.findViewById(R.id.turnoversTextView);
-            personalFouls = itemView.findViewById(R.id.personalFoulsTextView);
-            assistToTurnoverRatio = itemView.findViewById(R.id.assistToTurnoverRatioTextView);
+            playerNameTextView = itemView.findViewById(R.id.playerName);
+            gamesPlayedTextView = itemView.findViewById(R.id.games_played);
+            pointsTextView = itemView.findViewById(R.id.points);
+            reboundsTextView = itemView.findViewById(R.id.rebounds);
+            assistsTextView = itemView.findViewById(R.id.assists);
+            stealsTextView = itemView.findViewById(R.id.steals);
+            blocksTextView = itemView.findViewById(R.id.blocks);
+            turnoversTextView = itemView.findViewById(R.id.turnovers);
+            personalFoulsTextView = itemView.findViewById(R.id.personal_fouls);
+            assistToTurnoverRatioTextView = itemView.findViewById(R.id.assist_to_turnover_ratio);
         }
     }
 }

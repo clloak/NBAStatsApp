@@ -6,7 +6,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/playerNameTextView"
+        android:id="@+id/playerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Player Name"
@@ -14,7 +14,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/teamNameTextView"
+        android:id="@+id/teamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Team Name"

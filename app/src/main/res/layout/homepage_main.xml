@@ -14,15 +14,11 @@
         android:layout_height="wrap_content"
         android:text="View Games" />
 
-    <Button
-        android:id="@+id/playerSearchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search Players" />
 
     <Button
         android:id="@+id/teamSearchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Teams" />
+        android:text="View Teams"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>
