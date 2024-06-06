@@ -2,6 +2,7 @@ package com.example.nbastatsapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -118,5 +119,10 @@ public class TeamActivity extends AppCompatActivity {
         } else {
             Log.e("TeamActivity", "No team stats found");
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }
