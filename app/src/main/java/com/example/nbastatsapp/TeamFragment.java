@@ -19,14 +19,14 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-public class TeamFragment extends Fragment{
+public class TeamFragment extends Fragment {
     private static final String ARG_TEAM_ID = "team_id";
     private static final String ARG_TEAM_NAME = "team_name";
 
     private int teamId;
     private String teamName;
-    private TextView teamNameTextView, teamRecordTextView, gamesPlayedTextView, pointsTextView, assistsTextView,
-            stealsTextView, blocksTextView, turnoversTextView, personalFoulsTextView;
+    private TextView teamNameTextView, pointsTextView, assistsTextView,
+            stealsTextView, blocksTextView, turnoversTextView;
 
     public TeamFragment() {
         // Required empty public constructor
@@ -57,14 +57,11 @@ public class TeamFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_team, container, false);
 
         teamNameTextView = view.findViewById(R.id.teamName);
-        teamRecordTextView = view.findViewById(R.id.teamRecord);
-        gamesPlayedTextView = view.findViewById(R.id.gamesPlayedTextView);
         pointsTextView = view.findViewById(R.id.pointsTextView);
         assistsTextView = view.findViewById(R.id.assistsTextView);
         stealsTextView = view.findViewById(R.id.stealsTextView);
         blocksTextView = view.findViewById(R.id.blocksTextView);
         turnoversTextView = view.findViewById(R.id.turnoversTextView);
-        personalFoulsTextView = view.findViewById(R.id.personalFoulsTextView);
 
         fetchTeamStats();
 
@@ -113,14 +110,11 @@ public class TeamFragment extends Fragment{
         if (teamStatsList != null && !teamStatsList.isEmpty()) {
             TeamStats teamStats = teamStatsList.get(0);
             teamNameTextView.setText(teamName);
-            teamRecordTextView.setText(String.format("Record: %d-%d", teamStats.getWins(), teamStats.getLosses()));
-            gamesPlayedTextView.setText(String.format("Games Played: %d", teamStats.getGamesPlayed()));
             pointsTextView.setText(String.format("Points: %d", teamStats.getPoints()));
             assistsTextView.setText(String.format("Assists: %d", teamStats.getAssists()));
             stealsTextView.setText(String.format("Steals: %d", teamStats.getSteals()));
             blocksTextView.setText(String.format("Blocks: %d", teamStats.getBlocks()));
             turnoversTextView.setText(String.format("Turnovers: %d", teamStats.getTurnovers()));
-            personalFoulsTextView.setText(String.format("Personal Fouls: %d", teamStats.getPersonalFouls()));
         } else {
             Log.e("TeamFragment", "No team stats found");
         }

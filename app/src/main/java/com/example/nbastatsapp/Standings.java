@@ -7,6 +7,8 @@ public class Standings {
     private Division division;
     private Win win;
     private Loss loss;
+    private int wins;
+    private int losses;
 
     // Getters and setters for the above fields
 
@@ -57,5 +59,12 @@ public class Standings {
         private int lastTen;
 
         // Getters and setters
+    }
+    public int getWin() {
+        return wins;
+    }
+
+    public int getLoss() {
+        return losses;
     }
 }

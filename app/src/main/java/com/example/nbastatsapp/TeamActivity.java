@@ -107,43 +107,11 @@ public class TeamActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
-    private void fetchTeamStats(Team team) {
-        OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url("https://api-nba-v1.p.rapidapi.com/teams/statistics?id=" + team.getId())
-                .get()
-                .addHeader("X-RapidAPI-Key", "0a58e25b9bmsh009beca8bf674c2p143494jsne840fca5cc3b")
-                .addHeader("X-RapidAPI-Host", "api-nba-v1.p.rapidapi.com")
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                runOnUiThread(() -> Log.e("TeamActivity", "Failed to fetch team stats: ", e));
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    String jsonData = response.body().string();
-                    Type responseType = new TypeToken<APIResponse<TeamStats>>() {}.getType();
-                    APIResponse<TeamStats> apiResponse = new Gson().fromJson(jsonData, responseType);
-                    List<TeamStats> teamStatsList = apiResponse.getResponse();
-
-                    runOnUiThread(() -> displayTeamStats(teamStatsList));
-                } else {
-                    runOnUiThread(() -> Log.e("TeamActivity", "Failed to fetch team stats: " + response.message()));
-                }
-            }
-        });
-    }
 
     private void displayTeamStats(List<TeamStats> teamStatsList) {
         if (teamStatsList != null && !teamStatsList.isEmpty()) {
             TeamStats teamStats = teamStatsList.get(0);
             teamNameTextView.setText(teamStats.getTeamName());
-            teamRecordTextView.setText(String.format("Record: %d-%d", teamStats.getWins(), teamStats.getLosses()));
 
             // Here you should populate your RecyclerView with the stats data
             // Update the adapter of your RecyclerView to display the stats

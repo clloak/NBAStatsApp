@@ -113,7 +113,9 @@ public class YesterdayFragment extends Fragment {
             JSONArray responseArray = jsonObject.getJSONArray("response");
 
             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
+            inputFormat.setTimeZone(TimeZone.getTimeZone("UTC")); // Parse as UTC
             SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM-dd", Locale.getDefault());
+            outputFormat.setTimeZone(TimeZone.getDefault()); // Convert to local time zone
 
             for (int i = 0; i < responseArray.length(); i++) {
                 JSONObject gameObject = responseArray.getJSONObject(i);
